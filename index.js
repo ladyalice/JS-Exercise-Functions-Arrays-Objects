@@ -320,9 +320,28 @@ console.log(getLastCarInfo(inventory))
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
-  /* code here */
+function getModelYears(inventory) {
+  //const numOfCars = inventory.length - 1;
+  //for whatever reason the for fucntion couldn't call that so just put into the for loop
+  const allCarYears = [];
+
+//no need to - 1 because the .length property is the number of spots, including the zero.
+  for(i = 0; i < inventory.length; i++){
+    //first see if you can print them all, then figure out how to put them all in an array
+    let carInArray = inventory[i]
+    //sweet. it prints all the car years. Now to get all this into an array
+    //console.log(carInArray.car_year)
+    //now lets see, we can push it all to the empty array
+    allCarYears.push(carInArray.car_year);
+  }
+  //interesting, in the for loop when we just print, it caalls all 50 cars 
+  //out here, it only does 14. There are 14 cars, so we have to get that other one too...
+
+return allCarYears
+  
 }
+
+console.log(getModelYears(inventory));
 
 /**
  * ### Challenge `getCarInfoById`
@@ -338,10 +357,15 @@ function getModelYears(/* code here */) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById(inventory, id1) {
+  for(i = 0; i < inventory.length; i++){
+    if(inventory[i].id === id1){
+      return `This is a ${inventory[i].car_make} ${inventory[i].car_model}`
+    }
+  }
 }
 
+console.log(getCarInfoById(inventory, 13));
 /**
  * ### Challenge `getOlderCars`
  * * THIS ONE IS A STRETCH GOAL. ATTEMPT IT ONLY AFTER
@@ -356,10 +380,20 @@ function getCarInfoById(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
+
+//this one still needs work
+function getOlderCars(inventory, maxYear) {
+  let allCarsOfThatAgeOrLess = [];
+  for(i = 0; i < inventory.length; i++){
+    if(inventory[i].car_year <= maxYear){
+      allCarsOfThatAgeOrLess.push(inventory[i].car_year);
+
+    }
+    return allCarsOfThatAgeOrLess
+    }
 }
 
+console.log(getOlderCars(inventory, 1999));
 /**
  * ### Challenge `getGermanCars`
  * * THIS ONE IS A STRETCH GOAL. ATTEMPT IT ONLY AFTER
@@ -373,9 +407,20 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+
+//this one still needs work
+function getGermanCars(inventory) {
+  let fancyCars = [];
+  for(i = 0; i < inventory.length; i++){
+    
+    if(inventory[i].car_model === 'Audi' || 'Mercedes-Benz' || 'Volkswagen' || 'BMW'){
+      fancyCars.push(inventory[i].car_model)
+    }
+    return fancyCars
+  }
 }
+
+console.log(getGermanCars(inventory));
 
 /**
  * ### Challenge `carMaker`
