@@ -181,17 +181,23 @@ console.log(appleIndex(turkeydinner));
  * passing in [ 'orange', 'apple', 'banana', 'apples', 'apple', 'mango' ] as the argument,
  * the returned value should be: [ false, true, false, false, true, false ].
 */
-const fruits = ['orange', 'apple', 'banana', 'apples', 'apple', 'mango']
-function isItAnApple(array) {
+const fruits = ['orange', 'apple', 'banana', 'apples', 'apple', 'mango'];
 
+function isItAnApple(array) {
+  const arrayTruthy = [];
   for (let i = 0; i < array.length; i++){
-    if(array['apple']){
-      return 
+    if(array[i] === 'apple'){
+      arrayTruthy.push(true);
+    } else {
+      arrayTruthy.push(false);
     }
   }
+  return arrayTruthy
   
   }
-  /* code here */
+
+  console.log(isItAnApple(fruits));
+  
 
 
 
@@ -387,10 +393,9 @@ function getOlderCars(inventory, maxYear) {
   for(i = 0; i < inventory.length; i++){
     if(inventory[i].car_year <= maxYear){
       allCarsOfThatAgeOrLess.push(inventory[i].car_year);
-
     }
+  }
     return allCarsOfThatAgeOrLess
-    }
 }
 
 console.log(getOlderCars(inventory, 1999));
@@ -413,11 +418,12 @@ function getGermanCars(inventory) {
   let fancyCars = [];
   for(i = 0; i < inventory.length; i++){
     
-    if(inventory[i].car_model === 'Audi' || 'Mercedes-Benz' || 'Volkswagen' || 'BMW'){
-      fancyCars.push(inventory[i].car_model)
-    }
-    return fancyCars
+    if(inventory[i].car_model === 'Audi' || inventory[i].car_model === 'Mercedes-Benz' || inventory[i].car_model === 'Volkswagen' || inventory[i].car_model === 'BMW'){
+      fancyCars.push(inventory[i]);
+    } 
+    
   }
+  return fancyCars
 }
 
 console.log(getGermanCars(inventory));
